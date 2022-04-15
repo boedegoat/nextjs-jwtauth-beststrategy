@@ -50,7 +50,7 @@ const login: NextApiHandler = (req, res) => {
       value: refreshToken,
       options: {
         path: '/', // makes cookie persist accross the site
-        httpOnly: true, // makes cookie can't be accessible on client-side
+        httpOnly: true, // makes cookie can't be accessible on client-side, helps us prevent XSS attacks
         secure: process.env.NODE_ENV === 'production', // use https if production
         maxAge: 30 * 24 * 60 * 60 * 1000, // days * hour * minute * second * 1000 = ms
         sameSite: 'strict', // can't be use on different site, helps us prevent CSRF attacks
